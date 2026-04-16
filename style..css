@@ -1,0 +1,611 @@
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Body and layout - Dark academia parchment background */
+body {
+  font-family: 'Crimson Text', 'Times New Roman', serif;
+  background: #1a1a1a;
+  background-image:
+    radial-gradient(circle at 20% 80%, rgba(101, 67, 33, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(139, 69, 19, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(160, 82, 45, 0.05) 0%, transparent 50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  min-height: 100vh;
+  color: #d4d4d4;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 1px,
+      rgba(139, 69, 19, 0.03) 1px,
+      rgba(139, 69, 19, 0.03) 2px
+    );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Main container - Antique book page */
+.container {
+  background: linear-gradient(145deg, #2d2d2d 0%, #1f1f1f 100%);
+  border: 2px solid #8b4513;
+  border-radius: 8px;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 20px rgba(139, 69, 19, 0.2);
+  width: 100%;
+  max-width: 550px;
+  position: relative;
+  padding: 2.5rem;
+  background-image:
+    radial-gradient(circle at 30% 70%, rgba(101, 67, 33, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 70% 30%, rgba(139, 69, 19, 0.05) 0%, transparent 50%);
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #654321 0%, #8b4513 50%, #654321 100%);
+}
+
+/* Title styling - Scholarly header */
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #d4af37;
+  font-weight: 400;
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: 'Crimson Text', serif;
+  border-bottom: 1px solid #8b4513;
+  padding-bottom: 1rem;
+  position: relative;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, #d4af37 50%, transparent 100%);
+}
+
+/* Form styling - Scholarly input */
+#todo-form {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: rgba(139, 69, 19, 0.1);
+  border: 1px solid rgba(139, 69, 19, 0.3);
+  border-radius: 6px;
+}
+
+#todo-input {
+  flex: 1;
+  padding: 1rem 1.25rem;
+  border: 2px solid #8b4513;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: #2a2a2a;
+  color: #e8e8e8;
+  font-family: 'Crimson Text', serif;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#todo-input:focus {
+  outline: none;
+  border-color: #d4af37;
+  background: #333333;
+  box-shadow:
+    0 0 0 3px rgba(212, 175, 55, 0.2),
+    inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#todo-input::placeholder {
+  color: #a0a0a0;
+  font-style: italic;
+}
+
+/* Button base styles - Antique button */
+button {
+  padding: 1rem 1.75rem;
+  background: linear-gradient(145deg, #654321 0%, #8b4513 100%);
+  color: #f5f5dc;
+  border: 2px solid #a0522d;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Crimson Text', serif;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+button:hover {
+  background: linear-gradient(145deg, #8b4513 0%, #a0522d 100%);
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 16px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border-color: #d4af37;
+}
+
+/* Actions section */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.filters {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.filter-btn {
+  background: rgba(139, 69, 19, 0.1);
+  color: #d4d4d4;
+  border: 1px solid rgba(139, 69, 19, 0.3);
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-family: 'Crimson Text', serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  background: rgba(139, 69, 19, 0.2);
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+.filter-btn.active {
+  background: linear-gradient(145deg, #8b4513 0%, #a0522d 100%);
+  color: #f5f5dc;
+  border-color: #d4af37;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.dark-mode-btn {
+  background: rgba(139, 69, 19, 0.1);
+  color: #d4af37;
+  border: 1px solid rgba(139, 69, 19, 0.3);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark-mode-btn:hover {
+  background: rgba(139, 69, 19, 0.2);
+  border-color: #d4af37;
+  transform: scale(1.1);
+}
+
+/* Light mode styles */
+body.light-mode {
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+  color: #2d3748;
+}
+
+body.light-mode .container {
+  background: linear-gradient(145deg, #ffffff 0%, #f8f8f8 100%);
+  border-color: #cbd5e0;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+body.light-mode h1 {
+  color: #2d3748;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode #todo-input {
+  background: #ffffff;
+  color: #2d3748;
+  border-color: #cbd5e0;
+}
+
+body.light-mode #todo-input:focus {
+  background: #ffffff;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+body.light-mode button {
+  background: linear-gradient(145deg, #4299e1 0%, #3182ce 100%);
+  color: white;
+  border-color: #2c5282;
+}
+
+body.light-mode button:hover {
+  background: linear-gradient(145deg, #3182ce 0%, #2c5282 100%);
+}
+
+body.light-mode .filter-btn {
+  background: rgba(255, 255, 255, 0.8);
+  color: #4a5568;
+  border-color: #e2e8f0;
+}
+
+body.light-mode .filter-btn:hover {
+  background: rgba(66, 153, 225, 0.1);
+  border-color: #4299e1;
+}
+
+body.light-mode .filter-btn.active {
+  background: linear-gradient(145deg, #4299e1 0%, #3182ce 100%);
+  color: white;
+  border-color: #2c5282;
+}
+
+body.light-mode li {
+  background: linear-gradient(145deg, #f8f8f8 0%, #f0f0f0 100%);
+  border-color: rgba(203, 213, 224, 0.5);
+}
+
+body.light-mode li:hover {
+  background: linear-gradient(145deg, #ffffff 0%, #f8f8f8 100%);
+}
+
+body.light-mode .task-text {
+  color: #2d3748;
+}
+
+body.light-mode .task-text:hover {
+  color: #4299e1;
+}
+
+body.light-mode .task-text.completed {
+  color: #a0aec0;
+}
+
+body.light-mode .delete-btn {
+  background: linear-gradient(145deg, #fed7d7 0%, #feb2b2 100%);
+  color: #c53030;
+  border-color: #e53e3e;
+}
+
+body.light-mode .delete-btn:hover {
+  background: linear-gradient(145deg, #feb2b2 0%, #fc8181 100%);
+}
+
+body.light-mode .empty-state {
+  color: #a0aec0;
+  border-color: rgba(203, 213, 224, 0.3);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+body.light-mode .clear-btn {
+  background: linear-gradient(145deg, #e2e8f0 0%, #cbd5e0 100%);
+  color: #4a5568;
+  border-color: #a0aec0;
+}
+
+body.light-mode .clear-btn:hover {
+  background: linear-gradient(145deg, #cbd5e0 0%, #a0aec0 100%);
+  color: #2d3748;
+}
+
+body.light-mode .dark-mode-btn {
+  background: rgba(255, 255, 255, 0.8);
+  color: #4299e1;
+  border-color: #e2e8f0;
+}
+
+body.light-mode .dark-mode-btn:hover {
+  background: rgba(66, 153, 225, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+
+  .container {
+    padding: 1.5rem;
+    max-width: 100%;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  #todo-form {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  #todo-input {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  button {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .filters {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .filter-btn {
+    flex: 1;
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .clear-btn {
+    flex: 1;
+    padding: 0.75rem;
+  }
+
+  .dark-mode-btn {
+    width: 45px;
+    height: 45px;
+  }
+
+  li {
+    padding: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .todo-checkbox {
+    align-self: flex-start;
+    margin-bottom: 0.5rem;
+  }
+
+  .task-text {
+    flex: 1;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .delete-btn {
+    align-self: flex-end;
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .filters {
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    min-width: 80px;
+  }
+
+  li {
+    padding: 0.75rem;
+  }
+
+  .task-text {
+    font-size: 0.95rem;
+  }
+}
+
+/* Clear button specific styles - Scholarly accent */
+.clear-btn {
+  background: linear-gradient(145deg, #4a4a4a 0%, #666666 100%);
+  color: #d4d4d4;
+  font-size: 0.875rem;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid #8b4513;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  font-family: 'Crimson Text', serif;
+}
+
+.clear-btn:hover {
+  background: linear-gradient(145deg, #666666 0%, #8b4513 100%);
+  color: #f5f5dc;
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border-color: #a0522d;
+}
+
+/* Todo list styling - Antique manuscript */
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: rgba(139, 69, 19, 0.05);
+  border: 1px solid rgba(139, 69, 19, 0.2);
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+/* Individual todo item - Parchment note */
+li {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(145deg, #3a3a3a 0%, #2a2a2a 100%);
+  border: 1px solid rgba(139, 69, 19, 0.3);
+  border-left: 3px solid #8b4513;
+  position: relative;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  font-family: 'Crimson Text', serif;
+}
+
+li:hover {
+  background: linear-gradient(145deg, #454545 0%, #353535 100%);
+  border-color: rgba(212, 175, 55, 0.4);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.3),
+    0 0 8px rgba(212, 175, 55, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Checkbox styling - Antique checkbox */
+.todo-checkbox {
+  margin-right: 1rem;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #d4af37;
+  filter: brightness(1.2) contrast(1.1);
+}
+
+/* Task text styling - Scholarly text */
+.task-text {
+  flex: 1;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: #e8e8e8;
+  word-break: break-word;
+  transition: all 0.3s ease;
+  font-family: 'Crimson Text', serif;
+  line-height: 1.4;
+}
+
+.task-text:hover {
+  color: #f5f5dc;
+  text-shadow: 0 0 4px rgba(212, 175, 55, 0.3);
+}
+
+.task-text.completed {
+  text-decoration: line-through;
+  color: #a0a0a0;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+/* Delete button styling - Scholarly delete */
+.delete-btn {
+  background: linear-gradient(145deg, #8b4513 0%, #a0522d 100%);
+  color: #f5f5dc;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  margin-left: 0.75rem;
+  border: 1px solid #654321;
+  border-radius: 3px;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  font-family: 'Crimson Text', serif;
+  transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+  background: linear-gradient(145deg, #a0522d 0%, #cd853f 100%);
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.3),
+    0 0 8px rgba(205, 133, 63, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Empty state message - Scholarly placeholder */
+.empty-state {
+  text-align: center;
+  color: #a0a0a0;
+  margin-top: 2rem;
+  font-style: italic;
+  font-size: 1.1rem;
+  font-family: 'Crimson Text', serif;
+  border: 1px dashed rgba(139, 69, 19, 0.3);
+  padding: 1.5rem;
+  background: rgba(139, 69, 19, 0.05);
+  border-radius: 4px;
+  position: relative;
+}
+
+.empty-state::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  font-size: 3rem;
+  color: rgba(139, 69, 19, 0.2);
+  font-family: 'Times New Roman', serif;
+}
+
+.empty-state::after {
+  content: '"';
+  position: absolute;
+  bottom: -30px;
+  right: 20px;
+  font-size: 3rem;
+  color: rgba(139, 69, 19, 0.2);
+  font-family: 'Times New Roman', serif;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Todo List</title>
+  <!-- Google Fonts for Dark Academia typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <!-- Link to external stylesheet -->
+  <link rel="stylesheet" href="style..css">
+</head>
+<body>
+  <!-- Main container for the todo app -->
+  <div class="container">
+    <!-- App title -->
+    <h1>Todo List</h1>
+    <!-- Form to add new todos -->
+    <form id="todo-form">
+      <input type="text" id="todo-input" placeholder="What needs to be done?" required>
+      <button type="submit">Add</button>
+    </form>
+    <!-- Actions section with filters and controls -->
+    <div class="actions">
+      <div class="filters">
+        <button id="filter-all" class="filter-btn active">All</button>
+        <button id="filter-active" class="filter-btn">Active</button>
+        <button id="filter-completed" class="filter-btn">Completed</button>
+      </div>
+      <div class="controls">
+        <button id="clear-completed-btn" class="clear-btn">Clear Completed</button>
+        <button id="dark-mode-toggle" class="dark-mode-btn">🌙</button>
+      </div>
+    </div>
+    <!-- List to display todos -->
+    <ul id="todo-list"></ul>
+    <!-- Empty state message -->
+    <p id="empty-state" class="empty-state">No tasks yet. Add one above!</p>
+  </div>
+  <!-- Link to JavaScript file -->
+  <script src="script.js"></script>
+</body>
+</html>
